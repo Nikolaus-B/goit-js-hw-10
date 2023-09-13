@@ -9,12 +9,34 @@ async function getCats() {
   return await axios
     .get('/v1/breeds')
     .then(response => response.data)
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      Report.failure(
+        '',
+        'Oops! Something went wrong! Try reloading the page!',
+        'I know',
+        {
+          width: '360px',
+          svgSize: '120px',
+        }
+      );
+    });
 }
 async function fetchCatByBreed(breedId) {
   return await axios
     .get(`v1/images/search?breed_ids=${breedId}`)
     .then(response => response.data)
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      Report.failure(
+        '',
+        'Oops! Something went wrong! Try reloading the page!',
+        'I know',
+        {
+          width: '360px',
+          svgSize: '120px',
+        }
+      );
+    });
 }
 export { getCats, fetchCatByBreed };
